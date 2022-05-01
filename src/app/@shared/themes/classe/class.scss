@@ -1,0 +1,123 @@
+@import "../../../@shared/themes/_varibale/variable";
+.wrapper {
+  position: absolute;
+  height: 100%;
+  min-height: 300px;
+  width: 100%;
+  /* background-color:$primary-color; */
+  display: flex;
+  align-content:flex-end;
+  justify-content: space-evenly;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+    .underWrapper {
+        margin: auto;
+        box-shadow: inset 1px 1px 2px rgb(230, 213, 213),
+        inset -1px -1px 2px rgb(196, 185, 185);
+        padding: 0.4em;
+        animation: bounce 1s ease-in-out;
+        form{
+            width: 75%;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: 90%;
+            justify-content: center;
+            margin :auto;
+        }
+        .text-content {
+            display: flex;
+            align-items: baseline;
+              a{
+                color:$third-color;
+              }
+          }
+    }
+}
+form > div {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+  .buttonNeomorphic {
+    background-color: $primary-color;
+    color: $secondary-color;
+    border: none;
+    border-radius: 25px;
+    margin-bottom: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .buttonNeomorphic > span {
+    font-size: 1.2em;
+    margin: 0 0.3em;
+  }
+  .buttonNeomorphic:hover {
+    background-color: rgb(13, 9, 250);
+  }
+  .inputNeomorphic {
+    outline: none;border: none;
+    padding: 0.5em; margin-top: 0.3em;
+    background: none;
+    box-shadow: inset 1px 1px 2px rgb(180, 177, 177),
+    inset -1px -1px 2px rgb(196, 185, 185);
+    border-radius: 20px;
+    padding: .5em;
+    font-size: 5px;
+  }
+  .text{
+      font-size: $text-size;
+      color: $dark-color;
+      font-family: $font;
+  }
+  .wrapperImage{
+    animation: fadeOut 2s ease-in-out;
+    img{
+      width:100%;
+      animation: flash .5s ease-in-out 1.3s forwards;
+      opacity: 0;
+    }
+  }
+@keyframes flash {
+    0%{opacity: 0.6;}
+    100%{opacity: 1;}
+}
+    .bg-blue{
+    background-color: $primary-color;
+    width: 60vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+@media (min-width: 1050px) {
+  .wrapper {
+    align-items: center;
+  }
+  /* .wrapper .underWrapper {
+      width: 40vw;
+    } */
+  .buttonNeomorphic {
+    font-size: 1.1em;
+    padding: 0.5em;
+  }
+  .inputNeomorphic {
+    font-size:$text-size;
+    color:#272626fb;
+  }
+}
+@media (max-width: 500px) {
+  .wrapper {
+      .underWrapper { 
+          width: 90%;
+      }
+  }
+  .buttonNeomorphic {
+    font-size: 1.4em;
+    padding: 0.4em;
+  }
+  .inputNeomorphic {
+    font-size: 1.1em;
+  }
+}

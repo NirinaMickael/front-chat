@@ -1,0 +1,27 @@
+@import '../../../@shared/themes/classe/class.scss';
+  body{
+    background-color:$secondary-color
+  }
+  /*Login and signup*/
+  .login>div:nth-child(1) {
+      flex-basis: 40%;
+  } 
+  .login>div:nth-child(2) {
+    flex-basis: 55%;
+  }
+  .loginWrapper{
+    height:fit-content;
+    form {
+      div{
+        margin-top: 1em;
+      }
+    }
+  }
+  .bg-blue.left{
+    left: 0;
+    animation: translate  1.5s ease-in-out  ;
+  }
+@keyframes translate {
+    0%{opacity: 0;transform:translateX(-60vw)};
+    100%{opacity: 1;transform: translateX(0)}
+}

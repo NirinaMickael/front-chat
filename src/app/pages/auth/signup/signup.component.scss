@@ -1,0 +1,30 @@
+@import '../../../@shared/themes/_varibale/variable';
+@import '../../../@shared/themes/classe/class.scss';
+.signup {
+    justify-content: space-evenly;
+}
+.signup>div:nth-child(1){
+    flex-basis: 55%;
+}
+.signup>div:nth-child(2){
+    flex-basis: 40%;
+}
+.signup .signupWrapper div {
+    margin-top: 1em;
+    /* justify-items: center; */
+    width: 100%;
+}
+.signupWrapper div > label {
+    color: black;
+} 
+.signupWrapper div > input::placeholder {
+    color: #3d3b3bbb;
+}
+.bg-blue.right{
+    right: 0;
+    animation: translate  1.5s ease-in-out  ;
+}
+@keyframes translate {
+    0%{opacity: 0;display: none;transform:translateX(-60vw)};
+    100%{opacity: 1;display:block;transform: translateX(0)}
+}
