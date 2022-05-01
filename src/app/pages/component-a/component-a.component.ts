@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { text } from 'body-parser';
-import { debounceTime, filter, fromEvent, map, Observable, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable, switchMap } from 'rxjs';
 import { ObsService } from 'src/app/core/service/obs.service';
 /*
   debounceTime(time : ms)
@@ -16,7 +16,7 @@ import { ObsService } from 'src/app/core/service/obs.service';
 export class ComponentAComponent implements OnInit , AfterViewInit {
   value : string = "";
   @ViewChild ('textInput' , {static : true}) input !: ElementRef;
-  resultat : any;
+  resultat !: any;
   constructor(private _obs : ObsService) { }
 
   ngOnInit(): void {
@@ -26,10 +26,10 @@ export class ComponentAComponent implements OnInit , AfterViewInit {
       map(toAnyValue => toAnyValue as any),
       map(tovalue => tovalue.target?.value),
       filter(text=>text != ""),
-      debounceTime(300),
+      debounceTime(100),
+      distinctUntilChanged(),
       switchMap(params=>this._obs.GetUser(params)),
-      map(res=>res["data"])
-    ).subscribe(el=>this.resultat = el[0]["mail"])
+    ).subscribe(el=>this.resultat = el)
   }
   onChange(event : any) : void {
     this.value = event.target?.value;

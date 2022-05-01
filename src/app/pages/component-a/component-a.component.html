@@ -1,4 +1,4 @@
 <div class="search">
     <input type="text" class="text" [value]="value" (input)="onChange($event)" #textInput>
-    <p class="text">{{resultat}}</p>
+    <p class="text card" *ngFor="let item of resultat" > {{item.nom}}</p>
 </div>
