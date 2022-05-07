@@ -1,58 +1,27 @@
-<!-- <div class="wrapper signup">
-  <div class="wrapperImage">
-    <img src="assets/login.svg" alt="noimage" />
-  </div>
-  <div class="underWrapper signupWrapper">
-    <form id="form">
-      <div class="name">
-        <label htmlFor="name" class="text">Name</label>
-        <input type="text" id="name" class="inputNeomorphic" />
-      </div>
-      <div class="email">
-        <label htmlFor="email" class="text">Email</label>
-        <input type="email" id="email" class="inputNeomorphic text" />
-      </div>
-      <div class="password">
-        <label htmlFor="password" class="text">Password</label>
-        <input type="password" id="password" class="inputNeomorphic text" />
-      </div>
-      <div class="password">
-        <label htmlFor="repassword" class="text">Confirme password</label>
-        <input type="password" id="repassword" class="inputNeomorphic text" />
-      </div>
-      <div class="button">
-        <button type="submit" class="buttonNeomorphic">
-          <span>Registre</span>
-        </button>
-      </div>
-    </form>
-    <div class="text-content">
-      <p class="text">you have already an account</p>
-      <a [routerLink]="['../']">Login</a>
-    </div>
-  </div>
-</div>
-<div class="bg-blue right"></div> -->
-
-
-<div class="signup">
-  <div class="signup-connect">
-    <h1>Create your account</h1>
+<<div class="wrapper-form signup">
+  <div class="wrapper-connect">
+    <h1>Or reate your account with</h1>
     <a href="#" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
     <a href="#" class="btn btn-social btn-google"><i class="fa fa-google"></i> Sign in with Google</a>
   </div>
-  <div class="signup-classic">
+  <div class="wrapper-classic">
     <form class="form">
       <fieldset class="username">
-        <input type="text" placeholder="username" />
+        <input type="text" placeholder="username"/>
       </fieldset>
       <fieldset class="email">
-        <input type="email" placeholder="email" />
+        <input type="email" placeholder="email"/>
       </fieldset>
       <fieldset class="password">
         <input type="password" placeholder="password" />
       </fieldset>
-      <button type="submit" class="buttonNeomorphic">sign up</button>
+      <button type="submit" class="buttonNeomorphic"> <span>sign up</span> </button>
     </form>
+    <div class="wrapper-auth">
+      <span class="or">Or</span>
+      <div>
+           <button routerLink="../" class="Btn">  <span>Login</span> </button>
+      </div>
+ </div>
   </div>
 </div>
