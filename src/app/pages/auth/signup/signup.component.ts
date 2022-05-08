@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
+import { User } from 'src/app/core/models/user';
+import { UserService } from 'src/app/core/service/user.service';
 
+const option = {
+  responseType : 'text',
+  observe : 'response'
+}
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -7,9 +15,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _userApi : UserService ,private _userForm : FormBuilder) { }
 
   ngOnInit(): void {
   }
-
+  handleSubmit(event : Event){
+    event.preventDefault();
+    const data : User = this.registerForm.value ;
+    this._userApi.addUser("http://localhost:3000/api/createuser",data,option).subscribe(data=>console.log(data));
+  }
+  registerForm = this._userForm?.group({
+    username : ["",[Validators.required,Validators.minLength(3)]],
+    email : ["",[Validators.email,Validators.required]],
+    password : ["",Validators.required]
+  })
 }
