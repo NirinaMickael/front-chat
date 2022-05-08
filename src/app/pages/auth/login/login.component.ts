@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this._user.user$.subscribe((data) => {
       if(data){
-        this._route.navigate(["/auth/signup"])
+        this._route.navigate(["/home"])
       }
     });
   }

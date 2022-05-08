@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CouvertureComponent } from './couverture.component';
+import { AllConversationComponent } from './all-conversation.component';
 
-describe('CouvertureComponent', () => {
-  let component: CouvertureComponent;
-  let fixture: ComponentFixture<CouvertureComponent>;
+describe('AllConversationComponent', () => {
+  let component: AllConversationComponent;
+  let fixture: ComponentFixture<AllConversationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CouvertureComponent ]
+      declarations: [ AllConversationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CouvertureComponent);
+    fixture = TestBed.createComponent(AllConversationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

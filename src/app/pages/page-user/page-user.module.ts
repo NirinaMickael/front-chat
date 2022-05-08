@@ -7,10 +7,11 @@ import { ProfilModule } from './profil/profil.module';
 import { HomeComponent } from './home/home.component';
 
 
+
 @NgModule({
   declarations: [
     PageUserComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,
