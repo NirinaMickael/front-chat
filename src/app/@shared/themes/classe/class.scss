@@ -99,7 +99,9 @@ Form
     padding: 0;
     margin: 20px 0;
     position: relative;
-
+      small{
+        color: $third-color;
+      }
     input {
       width: 100%;
       height: 48px;

@@ -10,7 +10,7 @@ export class InterceptorService implements HttpInterceptor{
       .pipe(
         map((event : HttpEvent<any>)=>{
           if(event instanceof HttpResponse){
-            console.log('event' ,event)
+            console.log('event')
           }
           return event;
         }),

@@ -9,20 +9,39 @@
     >
   </div>
   <div class="wrapper-classic">
-    <form class="form">
+    <form class="form" [formGroup]="loginForm" (submit)="handleSubmit($event)">
       <fieldset class="email">
-        <input type="email" placeholder="Email" />
+        <input type="email" placeholder="Email" formControlName="email" />
+        <small *ngIf="loginForm.get('email')?.hasError('required')"
+          >Email is required.</small
+        >
+        <small *ngIf="loginForm.get('email')?.hasError('email')"
+          >Invalid email.</small
+        >
       </fieldset>
       <fieldset class="password">
-        <input type="password" placeholder="password" />
+        <input
+          type="password"
+          placeholder="password"
+          formControlName="password"
+        />
+        <small *ngIf="loginForm.get('password')?.hasError('required')"
+          >Email is required.</small
+        >
       </fieldset>
-      <button type="submit" class="buttonNeomorphic"><span>login</span></button>
+      <button
+        type="submit"
+        class="buttonNeomorphic"
+        [disabled]="loginForm.status === 'INVALID' ? true : false"
+      >
+        <span>login</span>
+      </button>
     </form>
     <div class="wrapper-auth">
-         <span class="or">Or</span>
-         <div>
-              <button routerLink="signup" class="Btn">  <span>Sign Up</span> </button>
-         </div>
+      <span class="or">Or</span>
+      <div>
+        <button routerLink="signup" class="Btn"><span>Sign Up</span></button>
+      </div>
     </div>
   </div>
 </div>
