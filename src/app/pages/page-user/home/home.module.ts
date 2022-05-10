@@ -5,6 +5,7 @@ import { AllConversationComponent } from './all-conversation/all-conversation.co
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { HomeRoutingModule } from './home-routing.module';
+import { SharedModule } from '../@shared/shared.module';
 
 
 
@@ -17,7 +18,8 @@ import { HomeRoutingModule } from './home-routing.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    RouterModule
-  ]
+    RouterModule,
+    SharedModule
+   ]
 })
 export class HomeModule { }

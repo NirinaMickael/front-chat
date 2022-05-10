@@ -16,11 +16,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ) {}
   ngOnInit(): void {}
   ngAfterViewInit(): void {
-    this._user.user$.subscribe((data) => {
-      if(data){
-        this._route.navigate(["/home"])
-      }
-    });
+    // this._user.user$.subscribe((data) => {
+    //   if(data){
+    //     this._route.navigate(["/home"])
+    //   }
+    // });
+    this._user.user().subscribe(data=>console.log(data))
   }
   loginForm = this._useForm.group({
     email: ['', [Validators.required, Validators.email]],
