@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/core/service/user.service';
+import { UserService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +16,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ) {}
   ngOnInit(): void {}
   ngAfterViewInit(): void {
-    // this._user.user$.subscribe((data) => {
-    //   if(data){
-    //     this._route.navigate(["/home"])
-    //   }
-    // });
-    this._user.user().subscribe(data=>console.log(data))
+    this._user.user$.subscribe((data) => {
+      if(data){
+        this._route.navigateByUrl('pages')
+      }
+    });
   }
   loginForm = this._useForm.group({
     email: ['', [Validators.required, Validators.email]],

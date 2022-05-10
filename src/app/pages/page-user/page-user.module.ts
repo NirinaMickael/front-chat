@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PageUserRoutingModule } from './page-user-routing.module';
 import { PageUserComponent } from './page-user.component';
 import { ProfilModule } from './profil/profil.module';
+import { HomeModule } from './home/home.module';
 
 
 
@@ -15,7 +16,8 @@ import { ProfilModule } from './profil/profil.module';
   imports: [
     CommonModule,
     PageUserRoutingModule,
-    ProfilModule
+    ProfilModule,
+    HomeModule
   ]
 })
 export class PageUserModule { }
