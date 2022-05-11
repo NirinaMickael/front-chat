@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { User } from 'src/app/core/models/user';
-import { UserService } from 'src/app/core/service/user.service';
+import { UserService } from 'src/app/core/service/auth.service';
 
 const option = {
   responseType : 'text',
