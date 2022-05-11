@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PublicationsComponent } from './publications/publications.component';
-import { PhotoComponent } from './photo/photo.component';
-import { SharedModule } from '../@shared/shared.module';
 
+import { ProfilRoutingModule } from './profil-routing.module';
+import { UserProfilComponent } from './user-profil/user-profil.component';
 
 
 @NgModule({
   declarations: [
-    PublicationsComponent,
-    PhotoComponent
+    UserProfilComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    ProfilRoutingModule
   ]
 })
 export class ProfilModule { }
