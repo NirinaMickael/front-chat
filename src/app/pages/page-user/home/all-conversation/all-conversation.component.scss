@@ -1,10 +1,23 @@
 @import '../../../../@shared/themes/classe/class.scss';
 .container-fluid{
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
+}
+app-search{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 22;
+}
+.clear_fix{
+    display: flex;
+    justify-content: center;
+    padding: 0;
 }
 .people-list {
     padding: 20px;
-    z-index: 7;
+    height: 100vh;
+    overflow: auto;
     -moz-transition: .5s;
     -o-transition: .5s;
     -webkit-transition: .5s;
@@ -62,9 +75,9 @@
     color: #1d8ecd
 }
 
-.float-right {
-    float: right
-}
+// .float-right {
+//     float: right
+// }
 @media only screen and (max-width: 767px) {
     .chat-app .people-list {
         height: 465px;

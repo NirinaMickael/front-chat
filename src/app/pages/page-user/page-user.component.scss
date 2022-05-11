@@ -2,32 +2,20 @@
 @import "./@shared/themes/classes.scss";
 .container-fluid {
   height: 100vh;
+  width: 100vw;
 }
-.card {
-  // background:$primary-color;
+.Card {
   backdrop-filter:blur(10px);
   transition: 0.5s;
-  border: 0;
-  margin-bottom: 30px;
-  border-radius: 0.55rem;
-  position: relative;
   width: 100%;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
-  display: flex;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  justify-content: space-between;
+  grid-template-rows: 1fr;
+  background:#fff;
 }
-.chat-app .people-list {
-  width: 280px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 20px;
-  z-index: 7;
-  overflow-y: auto;
-}
-
-.chat-app .chat {
-  margin-left: 280px;
-  border-left: 1px solid #eaeaea;
+.chat-app .people-list , .chat-app .chat {
+  width: 100%;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {

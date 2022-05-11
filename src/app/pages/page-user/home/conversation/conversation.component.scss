@@ -1,5 +1,9 @@
 @import '../../@shared/themes/classes.scss';
-
+@import '../../../../@shared/themes/_varibale/variable';
+.chat{
+    grid-template-rows: 10% 80% 15%;
+    display: grid;
+}
 .chat .chat-history {
     padding: 20px;
     border-bottom: 2px solid #fff
@@ -75,7 +79,7 @@
 }
 
 .chat .chat-history .other-message {
-    background: #e8f1f3;
+    background: $primary-color;
     text-align: right
 }
 
