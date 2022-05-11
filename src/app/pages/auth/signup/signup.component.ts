@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   handleSubmit(event : Event){
     event.preventDefault();
     const data : User = this.registerForm.value ;
-    this._userApi.addUser("http://localhost:3000/api/createuser",data,option).subscribe(data=>console.log(data));
+    this._userApi.addUser("http://192.168.1.94:3000/api/createuser",data,option).subscribe(data=>console.log(data));
   }
   registerForm = this._userForm?.group({
     username : ["",[Validators.required,Validators.minLength(3)]],

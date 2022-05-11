@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild,Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, map, switchMap } from 'rxjs';
 import { UserService } from '../../../core/service/user.service';
 
@@ -10,9 +11,8 @@ import { UserService } from '../../../core/service/user.service';
 export class SearchComponent implements OnInit,AfterViewInit {
   value : String = "";
   @ViewChild("textInput",{static:true}) input !: ElementRef;
-  users = [{username :"nirina"}];
-  constructor(private _user : UserService) { }
-
+  users : any;
+  constructor(private _user : UserService,private _route : Router) { }
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
@@ -21,12 +21,17 @@ export class SearchComponent implements OnInit,AfterViewInit {
       map(tovalue => tovalue.target?.value),
       filter(text=>text != ""),
       debounceTime(100),
-      distinctUntilChanged(),
       switchMap(params=>this._user.searchUser(params)),
       map(res=>res["data"])
-    ).subscribe(res=>console.log(res));
+    ).subscribe(res=>{
+      this.users=res;
+    });
   }
   onChange(event : any) : void {
     this.value = event.target?.value;
+    if(this.value==="") this.users = [];
   }
+  // handleNavigate(id : string){
+  //   this._route.navigateByUrl('pages/profil')
+  // }
 }
