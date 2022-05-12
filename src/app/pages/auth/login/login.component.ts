@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this._user.user$.subscribe((data) => {
       if(data){
+        localStorage.setItem('id',data['_id']);
         this._route.navigateByUrl('pages')
       }
     });
