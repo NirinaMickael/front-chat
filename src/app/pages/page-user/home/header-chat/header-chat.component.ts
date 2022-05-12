@@ -12,7 +12,7 @@ export class HeaderChatComponent implements OnInit {
   user !:any;
   ngOnInit(): void {
     const id = sessionStorage.getItem('id');
-    this._user.dataUser(`http://192.168.99.161:3000/api/user/${id}`).pipe(
+    this._user.dataUser(`http://localhost:3000/api/user/${id}`).pipe(
       delay(100)
     ).subscribe(data=>this.user=data)
   }

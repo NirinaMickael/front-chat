@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     event.preventDefault();
     const data = this.loginForm.value;
     this._user
-      .loginUser('http://192.168.99.161:3000/api/', data, {
+      .loginUser('http://localhost:3000/api/', data, {
         responseType: 'json',
         observe: 'response',
       })
