@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { User } from 'src/app/core/models/user';
-import { UserService } from 'src/app/core/service/auth.service';
+import { AuthService} from 'src/app/core/service/auth.service';
 
 const option = {
   responseType : 'text',
@@ -15,14 +15,14 @@ const option = {
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _userApi : UserService ,private _userForm : FormBuilder) { }
+  constructor(private _userApi : AuthService ,private _userForm : FormBuilder) { }
 
   ngOnInit(): void {
   }
   handleSubmit(event : Event){
     event.preventDefault();
     const data : User = this.registerForm.value ;
-    this._userApi.addUser("http://192.168.1.94:3000/api/createuser",data,option).subscribe(data=>console.log(data));
+    this._userApi.addUser("http://192.168.99.161:3000/api/createuser",data,option).subscribe(data=>console.log(data));
   }
   registerForm = this._userForm?.group({
     username : ["",[Validators.required,Validators.minLength(3)]],
