@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProfilRoutingModule } from './profil-routing.module';
 import { UserProfilComponent } from './user-profil/user-profil.component';
+import { SharedModule } from '../@shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
   ],
   imports: [
     CommonModule,
-    ProfilRoutingModule
+    ProfilRoutingModule,
+    SharedModule
   ]
 })
 export class ProfilModule { }

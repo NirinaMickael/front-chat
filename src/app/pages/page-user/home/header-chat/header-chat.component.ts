@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { delay, map } from 'rxjs';
+import { UserService } from '../../core/service/user.service';
 
 @Component({
   selector: 'app-header-chat',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-chat.component.scss']
 })
 export class HeaderChatComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private _user : UserService) { }
+  user !:any;
   ngOnInit(): void {
+    const id = sessionStorage.getItem('id');
+    this._user.dataUser(`http://192.168.99.161:3000/api/user/${id}`).pipe(
+      delay(100)
+    ).subscribe(data=>this.user=data)
   }
-
 }

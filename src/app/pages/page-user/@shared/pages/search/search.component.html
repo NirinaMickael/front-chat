@@ -16,6 +16,7 @@
       *ngFor="let item of users; let i = index"
       [ngStyle]="{ 'animation-delay.s': (i + 1) / 10 }"
       routerLink="profil/{{item.username}}"
+      (click)="handleClick(item['_id'])"
     >
       <img src="./assets/avatar1.png" alt="no image" srcset="" />
       <span>{{ item.username }}</span>
