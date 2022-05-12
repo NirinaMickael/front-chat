@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { User } from 'src/app/core/models/user';
-import { UserService } from 'src/app/core/service/auth.service';
+import { AuthService} from 'src/app/core/service/auth.service';
 
 const option = {
   responseType : 'text',
@@ -15,7 +15,7 @@ const option = {
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private _userApi : UserService ,private _userForm : FormBuilder) { }
+  constructor(private _userApi : AuthService ,private _userForm : FormBuilder) { }
 
   ngOnInit(): void {
   }

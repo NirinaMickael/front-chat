@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../core/service/user.service';
 
 @Component({
   selector: 'app-user-profil',
@@ -11,7 +12,6 @@ export class UserProfilComponent implements OnInit {
   constructor(private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.name=this.route.snapshot.params['username'];    
+    this.name=this.route.snapshot.params['username'];   
   }
-
 }

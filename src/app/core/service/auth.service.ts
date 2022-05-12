@@ -7,7 +7,7 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
   user$ = new Subject<any>();
   constructor( private _http : HttpClient) { }
 
@@ -16,6 +16,9 @@ export class UserService {
   }
   loginUser (url: string , data : User , option={}) :Observable<any>{
     return this._http.post<any>(url,data,option);
+  }
+  getUser(url: string , option={}) :Observable<any>{
+    return this._http.post<any>(url,option);
   }
   user() : Subject<any>{
     return this.user$;
