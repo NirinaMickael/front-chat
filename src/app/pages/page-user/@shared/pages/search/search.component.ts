@@ -34,4 +34,7 @@ export class SearchComponent implements OnInit,AfterViewInit {
   // handleNavigate(id : string){
   //   this._route.navigateByUrl('pages/profil')
   // }
+  handleClick(id : string){
+    sessionStorage.setItem('otherId',id);
+  }
 }
