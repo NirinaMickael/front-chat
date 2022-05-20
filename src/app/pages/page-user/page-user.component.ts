@@ -9,5 +9,6 @@ import { UserService } from './core/service/user.service';
 export class PageUserComponent implements OnInit {
   constructor(private _user : UserService) { }
   ngOnInit(): void {
+    sessionStorage.removeItem('otherId');
   }
 }

@@ -1,12 +1,6 @@
 <a
-  href="javascript:void(0)"
+  *ngFor="let item  of btn"
   class="m-t-10 mx-2 waves-effect waves-dark btn btn-primary btn-md btn-rounded"
-  data-abc="true"
-  >Follow</a
->
-<a
-  routerLink="../../"
-  class="m-t-10 mx-2 waves-effect waves-dark btn btn-primary btn-md btn-rounded"
-  data-abc="true"
-  >Message</a
+  data-abc="true" (click)="handleClick(item.action)";
+  >{{item.name}}</a
 >

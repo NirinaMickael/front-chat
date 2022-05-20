@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       if(data){
         sessionStorage.setItem('id',data['_id']);
         this._route.navigateByUrl('pages')
+      }else{
+        alert('No User found');
       }
     });
   }

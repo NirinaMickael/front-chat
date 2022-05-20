@@ -14,4 +14,7 @@ export class UserService {
   dataUser(url : string,option={}): Observable<any> {
     return this._user.getUser(url,option);
   }
+  AddFriend(id : string){
+    console.log("user is added")  
+  }
 }

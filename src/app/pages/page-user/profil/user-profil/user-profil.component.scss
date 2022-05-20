@@ -8,7 +8,10 @@
 .card-img-top{
     height:300px;
 }
-
+.opacity{
+    opacity: 0.3;
+    background: #b9b9b949;
+}
 .card-no-border .card {
     border-color: #d7dfe3;
     border-radius: 4px;
@@ -23,17 +26,27 @@
     padding: 1.25rem
 }
 
-.pro-img {
+.little-profile .pro-img {
     margin-top: -80px;
-    margin-bottom: 20px
-}
+    margin-bottom: 20px;
+    img {
+        background-size: contain;
+        width: 128px;
+        height: 128px;
+        -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 100%;
+    }
+    label{
+        position:relative;
+        top: 50px;
+        right: 25px;
+        i{
+            color: #9ca1a3;
+            font-size: 25px;
+        }
+    }
 
-.little-profile .pro-img img {
-    width: 128px;
-    height: 128px;
-    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 100%
 }
 
 html body .m-b-0 {
@@ -92,4 +105,38 @@ h6 {
 p {
     margin-top: 0;
     margin-bottom: 1rem
+}
+.container-dialogue{
+    box-sizing: content-box;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center; align-items: center;
+    .dialogue{
+        width: 40vw;
+        height: 10vw;
+        background-color:#fff;
+        box-shadow: 1px 2px 2px #dfdfe2,
+                    -1px -2px 2px #bebebe;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; align-items: center;
+        border-radius: 5px;
+        animation: fadeOut .4s ease-in-out;
+    .buttons{
+        button:nth-child(2){
+            background: $third-color;
+        }
+    }
+    }
+    @keyframes fadeOut {
+        0%{
+            opacity: .3;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
 }

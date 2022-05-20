@@ -26,10 +26,11 @@ export class InterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log('event');
+
         }
         return event;
       }),
+      //handling error from server and client
       catchError((error: HttpErrorResponse) => {
         let errorMessage = ' ';
         if (error.error instanceof ErrorEvent) {
@@ -37,7 +38,7 @@ export class InterceptorService implements HttpInterceptor {
         } else {
           errorMessage = `Error Code : ${error.status}\nMessage ${error.message} ${error.type} `;
         }
-        return throwError(() => new Error(error.error));
+        return throwError(() => new Error(errorMessage));
       })
     );
   }
