@@ -24,7 +24,7 @@ export class UserProfilComponent implements OnInit {
   ngOnInit(): void {
     this.name = this.route.snapshot.params['username'];
     this.isOther =(this.otherId === this.ownId || this.otherId === null) ? false : true;
-    if (this.isOther) {
+    if (!this.isOther) {
       this.button = [
         {
           name: 'Edit Profil',

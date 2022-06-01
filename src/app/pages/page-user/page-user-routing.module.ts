@@ -5,22 +5,24 @@ import { PageUserComponent } from './page-user.component';
 
 const routes: Routes = [
   {
-    path : '',
-    component:PageUserComponent,
-    canActivate:[AuthGuard]
+    path: '',
+    redirectTo:'home',
+    pathMatch: 'full',
   },
   {
-    path:'home',
-    loadChildren : () => import('./home/home.module').then(m=>m.HomeModule)
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomeModule),
   },
   {
-    path:'profil',
-    loadChildren : () => import ('./profil/profil.module').then(m=>m.ProfilModule)
+    path: 'profil',
+    loadChildren: () =>
+      import('./profil/profil.module').then((m) => m.ProfilModule),
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PageUserRoutingModule { }
+export class PageUserRoutingModule {}

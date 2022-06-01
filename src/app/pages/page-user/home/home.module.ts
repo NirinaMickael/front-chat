@@ -22,10 +22,6 @@ import { HeaderChatComponent } from './header-chat/header-chat.component';
     HomeRoutingModule,
     RouterModule,
     SharedModule
-   ],
-   exports :[
-     AllConversationComponent,
-     ConversationComponent
    ]
 })
 export class HomeModule { }

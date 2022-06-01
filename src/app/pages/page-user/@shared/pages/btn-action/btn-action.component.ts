@@ -12,7 +12,9 @@ export class BtnActionComponent implements OnInit {
   @Input()  otherId!:string;
   @Input() ownId!:string;
   constructor(private _user : UserService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.btn);
+  }
   handleClick(action: string) {
     switch (action) {
       case 'form':
