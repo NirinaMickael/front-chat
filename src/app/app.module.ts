@@ -4,14 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComponentAComponent } from './pages/component-a/component-a.component';
 import { httpInterceptorProviders } from './core/http-interceptore';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ComponentAComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
