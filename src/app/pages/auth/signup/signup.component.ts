@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
-import { User } from 'src/app/core/models/user';
+import { IUser } from 'src/app/core/models/user';
 import { AuthService} from 'src/app/core/service/auth.service';
 
 const option = {
@@ -21,8 +21,8 @@ export class SignupComponent implements OnInit {
   }
   handleSubmit(event : Event){
     event.preventDefault();
-    const data : User = this.registerForm.value ;
-    this._userApi.addUser("http://localhost:3000/api/createuser",data,option).subscribe(data=>console.log(data));
+    const data : IUser = this.registerForm.value ;
+    this._userApi.addUser("/api/createuser",data,option).subscribe(data=>console.log(data));
   }
   registerForm = this._userForm?.group({
     username : ["",[Validators.required,Validators.minLength(3)]],

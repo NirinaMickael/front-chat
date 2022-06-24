@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllConversationComponent } from './all-conversation/all-conversation.component';
@@ -7,7 +9,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../@shared/shared.module';
 import { ConversationComponent } from './conversation/conversation.component';
 import { HeaderChatComponent } from './header-chat/header-chat.component';
-
+import { OpenChatComponent } from './@feature/open-chat/open-chat.component';
+import { MessageComponent } from './@feature/message/message.component';
 
 
 @NgModule({
@@ -15,13 +18,18 @@ import { HeaderChatComponent } from './header-chat/header-chat.component';
     AllConversationComponent,
     ConversationComponent,
     HomeComponent,
-    HeaderChatComponent
+    HeaderChatComponent,
+    OpenChatComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule,
    ]
 })
 export class HomeModule { }

@@ -5,6 +5,8 @@ import { SearchComponent } from './pages/search/search.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BtnActionComponent } from './pages/btn-action/btn-action.component';
+import { ChatBoxComponent } from './chat-box/chat-box.component';
+import { LoadingComponent } from './pages/loading/loading.component';
 
 
 
@@ -12,7 +14,9 @@ import { BtnActionComponent } from './pages/btn-action/btn-action.component';
   declarations: [
     HeaderComponent,
     SearchComponent,
-    BtnActionComponent
+    BtnActionComponent,
+    ChatBoxComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +25,9 @@ import { BtnActionComponent } from './pages/btn-action/btn-action.component';
   exports : [
     HeaderComponent,
     SearchComponent,
-    BtnActionComponent
+    BtnActionComponent,
+    ChatBoxComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }

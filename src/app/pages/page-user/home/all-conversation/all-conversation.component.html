@@ -1,9 +1,10 @@
 <div id="plist" class="people-list">
     <app-search></app-search>
+    <p class="Title">All friends</p>
     <ul class="list-unstyled chat-list mt-2 mb-0">
         <ng-container *ngIf="!allFriendState.isLoading">
             <li class="clear_fix" *ngFor="let friend of allFriends" (click)="handleClick(friend._id)" >
-                <img src="assets/avatar1.png" alt="avatar">
+                <img src="{{friend.image}}" alt="avatar">
                 <div class="about">
                     <div class="name">{{friend.username}}</div>
                     <div class="status"> <i class="fa fa-circle offline"></i> left 7 mins ago </div>                                            

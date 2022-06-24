@@ -12,7 +12,11 @@
   overflow: hidden;
   display: flex;
 }
-
+.Title{
+  font-size:20px;
+  color: $third-color;
+  margin-top: .5em;
+}
 // @keyframes fadeOut {
 //   0%{ 
 //     opacity: 0.2;

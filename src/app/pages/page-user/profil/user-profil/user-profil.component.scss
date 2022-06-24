@@ -29,7 +29,7 @@
 .little-profile .pro-img {
     margin-top: -80px;
     margin-bottom: 20px;
-    img {
+    img , .imageLoad{
         background-size: contain;
         width: 128px;
         height: 128px;
@@ -115,8 +115,8 @@ p {
     display: flex;
     justify-content: center; align-items: center;
     .dialogue{
-        width: 40vw;
-        height: 10vw;
+        width: fit-content;
+        height: fit-content;
         background-color:#fff;
         box-shadow: 1px 2px 2px #dfdfe2,
                     -1px -2px 2px #bebebe;
@@ -139,4 +139,9 @@ p {
             opacity: 1;
         }
     }
+}
+.chat{
+    position: absolute;
+    bottom:0;
+    right: 0;
 }

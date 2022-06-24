@@ -7,8 +7,6 @@ import { ProfilModule } from './profil/profil.module';
 import { HomeModule } from './home/home.module';
 
 
-
-
 @NgModule({
   declarations: [
     PageUserComponent,

@@ -18,18 +18,10 @@ export class HeaderChatComponent implements OnInit {
   }
   ngOnInit(): void {
     this._user.user$.subscribe(
-      data => this.user = data
+      data => {
+        this.user = data;
+      }
     )
-    setTimeout(()=>{
-      this._user.getImage(environment.api+"/api/getImage/"+this.user._id,this.option).subscribe(
-        data => {
-          this.isLoad = false;
-          let objectURL = 'data:image/jpeg;base64,' + data;
-
-         this.imagePath = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-        }
-      )
-    },500)
   }
   sanitize(url : string){
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);

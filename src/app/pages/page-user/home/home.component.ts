@@ -1,34 +1,56 @@
+import { NgxSpinnerService } from 'ngx-spinner';
+import { IUser } from './../core/models/user';
+import { IResponse } from './../../../core/models/IResponse';
 import { FetchState } from './../core/models/FetchState';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../core/service/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  userId !: string | null;
+export class HomeComponent implements OnInit, AfterContentInit {
+  userId!: string | null;
+  idMessage!: string | null;
   conversation: any;
+  isChatOpen: boolean = false;
   user: any;
-  stateUser  : FetchState = {
+  stateUser: FetchState = {
     isLoading: true,
     isPedding: true,
-    isFinish: false
+    isFinish: false,
   };
-  constructor(private _user: UserService) {
-  }
+  constructor(
+    private _user: UserService,
+    private _route: ActivatedRoute,
+    private route: Router,
+    private SpinnerService : NgxSpinnerService
+  ) {}
   ngOnInit(): void {
-    // console.log(this.stateUser) 
+    this.idMessage = this._route.firstChild?.snapshot.params['idMessage'];
     this.userId = sessionStorage.getItem('id');
-    this._user.dataUser(environment.api + "/api/user/" + this.userId).subscribe(
-      data => {
+    this.SpinnerService.show();
+    this._user.dataUser('/api/user/' + this.userId).subscribe({
+      next: (res) => {
         this.stateUser.isLoading = false;
         this.stateUser.isFinish = true;
-        this.user = data;
-        this._user.user$.next(data);
-      }
-    );
+        this.user = res;
+        this._user.user$.next(res.data as IUser);
+        this.SpinnerService.hide();
+      },
+      error: (err) => {
+        err.subscribe((res: IResponse) => {
+          alert(res.message);
+          this.route.navigateByUrl('auth');
+        });
+      },
+    });
+  }
+  ngAfterContentInit(): void {
+    this.isChatOpen = this.idMessage !== null && this.idMessage ? true : false;
   }
 }

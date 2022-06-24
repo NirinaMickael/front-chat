@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +14,9 @@ import { SharedModule } from '../@shared/shared.module';
   imports: [
     CommonModule,
     ProfilRoutingModule,
-    SharedModule
+    SharedModule,
+    SharedModule,
+    NgxSpinnerModule
   ]
 })
 export class ProfilModule { }

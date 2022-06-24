@@ -15,7 +15,7 @@
       class="text d-flex"
       *ngFor="let item of users; let i = index"
       [ngStyle]="{ 'animation-delay.s': (i + 1) / 10 }"
-      routerLink="../profil/{{item.username}}"
+      routerLink="{{handleUrl(item.username)}}"
       (click)="handleClick(item['_id'])"
     >
       <img src="./assets/avatar1.png" alt="no image" srcset="" />

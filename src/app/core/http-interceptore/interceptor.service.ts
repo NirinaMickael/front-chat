@@ -14,6 +14,8 @@ import {
   Observable,
   retry,
   throwError,
+  mergeMap,
+  of
 } from 'rxjs';
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
@@ -25,9 +27,9 @@ export class InterceptorService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       map((event: HttpEvent<any>) => {
-        if (event instanceof HttpResponse) {
-
-        }
+        // if (event instanceof HttpResponse) {
+          
+        // }
         return event;
       }),
       //handling error from server and client
@@ -36,9 +38,9 @@ export class InterceptorService implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           errorMessage = `error : ${error.error.message} ${error.name}`;
         } else {
-          errorMessage = `Error Code : ${error.status}\nMessage ${error.message} ${error.type} `;
+          errorMessage = error.error;
         }
-        return throwError(() => new Error(errorMessage));
+        return throwError(() => of(errorMessage));
       })
     );
   }

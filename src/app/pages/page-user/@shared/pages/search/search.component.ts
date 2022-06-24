@@ -12,8 +12,10 @@ export class SearchComponent implements OnInit,AfterViewInit {
   value : String = "";
   @ViewChild("textInput",{static:true}) input !: ElementRef;
   users : any;
+  currentUrl !: string;
   constructor(private _user : UserService,private _route : Router) { }
-  ngOnInit(): void {
+  ngOnInit(): void {  
+     this.currentUrl = this._route.url;
   }
   ngAfterViewInit(): void {
     fromEvent(this.input.nativeElement,'input').pipe(
@@ -36,5 +38,9 @@ export class SearchComponent implements OnInit,AfterViewInit {
   // }
   handleClick(id : string){
     sessionStorage.setItem('otherId',id);
+  }
+  handleUrl(username : string) : string {
+    // ../profil/{{item.username}}
+    return   this.currentUrl === '/pages/home' ? `../profil/${username}` : `profil/${username}` 
   }
 }
