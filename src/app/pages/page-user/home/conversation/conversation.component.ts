@@ -1,3 +1,4 @@
+import { ChatServiceService } from './../../core/service/chat-service.service';
 import { IMessage } from './../../core/models/IMessage';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IConversation } from './../../../../core/models/converstaion';
@@ -18,7 +19,9 @@ import {
   AfterViewChecked,
   Component,
   Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
 } from '@angular/core';
 import { UserService } from '../../core/service/user.service';
 
@@ -27,23 +30,34 @@ import { UserService } from '../../core/service/user.service';
   templateUrl: './conversation.component.html',
   styleUrls: ['./conversation.component.scss'],
 })
-export class ConversationComponent implements OnInit {
+
+export class ConversationComponent implements OnInit , OnChanges {
   _id!: string;
   ownId!: string | null;
-  convId !: string;
+  convId!: string;
   message!: IMessage[];
   otherImage!: string;
+  writting !: IMessage ;
   registerForm = this.builder.group({
-    messages:['',Validators.required]
-  })
+    messages: ['', Validators.required],
+  });
   allMessageState: FetchState = {
     isLoading: true,
     isFinish: false,
     isPedding: true,
   };
-  constructor(private _route: ActivatedRoute, private _user: UserService , private builder : FormBuilder) {
+  otherUser!: string;
+  constructor(
+    private _route: ActivatedRoute,
+    private _user: UserService,
+    private builder: FormBuilder,
+    private chatService :ChatServiceService
+  ) {
     this._id = _route.firstChild?.snapshot.params['idMessage'];
     this.ownId = sessionStorage.getItem('id');
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    
   }
   ngOnInit(): void {
     this._user.idMessage$
@@ -53,7 +67,8 @@ export class ConversationComponent implements OnInit {
           return this.getConversationId(this.ownId, res);
         }),
         map((conv: IResponse) => {
-          this.convId = (conv.data as IConversation[])[0]._id ; 
+          this.convId = (conv.data as IConversation[])[0]._id;
+          this.chatService.joinRoom(this.convId);
           return this.convId;
         }),
         mergeMap((convId) => {
@@ -75,7 +90,10 @@ export class ConversationComponent implements OnInit {
         map((otherId: IResponse) => (otherId.data as IUser).image)
       )
       .subscribe((data) => (this.otherImage = data as string));
-  }
+      this.chatService.getMessage().subscribe((message : any)=>{
+          this.message.push(message.data);
+      })
+    }
   getConversationId(
     ownId: string | null,
     otherId: string | null
@@ -83,17 +101,29 @@ export class ConversationComponent implements OnInit {
     if (ownId == '') return new BehaviorSubject<any>('');
     return this._user.getConversation('/conversation/' + ownId + '/' + otherId);
   }
-
   getOtherUser(otherId: string): Observable<any> {
     return this._user.dataUser('/api/user/' + otherId);
   }
-  handleSubmit(){
+  handleSubmit() {
     let messages = this.registerForm.value;
-    if( messages !== ""){
-      let formData : IMessage = {...messages , senderId:this.ownId}; 
-      this._user.SendMessage('/message/'+this.convId+'/send',formData).subscribe(
-        data => console.log(data)
-      );
+    if (messages !== '') {
+      let formData: IMessage = { ...messages, senderId: this.ownId };
+      this.message.push({...formData, createdAt : new Date()});
+      this._user
+        .SendMessage('/message/' + this.convId + '/send', formData)
+        .subscribe((data) => {
+          this.chatService.sendMessage(data);
+          this.chatService.writting({from:this.ownId,isWrite:false});
+          this.registerForm.setValue({ messages: '' });
+        });
+    }
+  }
+  handleChange(event : Event){
+    let value = (event.target as HTMLInputElement).value;
+    if(value !== ""){
+      this.chatService.writting({from : this.ownId , isWrite : true});
+    }else{
+      this.chatService.writting({from : this.ownId , isWrite : false})
     }
   }
 }

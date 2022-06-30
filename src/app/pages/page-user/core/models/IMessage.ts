@@ -5,3 +5,7 @@ export interface IMessage {
     createdAt ?: Date;
     updateAt ?: Date;
 }
+export interface IWritting {
+    from : string | null,
+     isWrite : boolean
+}

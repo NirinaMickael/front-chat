@@ -11,8 +11,6 @@ import { ConversationComponent } from './conversation/conversation.component';
 import { HeaderChatComponent } from './header-chat/header-chat.component';
 import { OpenChatComponent } from './@feature/open-chat/open-chat.component';
 import { MessageComponent } from './@feature/message/message.component';
-
-
 @NgModule({
   declarations: [
     AllConversationComponent,
@@ -29,7 +27,7 @@ import { MessageComponent } from './@feature/message/message.component';
     ReactiveFormsModule,
     RouterModule,
     SharedModule,
-    NgxSpinnerModule,
+    NgxSpinnerModule
    ]
 })
 export class HomeModule { }

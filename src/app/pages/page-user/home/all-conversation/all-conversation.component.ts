@@ -1,9 +1,11 @@
+import { ChatServiceService } from './../../core/service/chat-service.service';
 import { FetchState } from './../../core/models/FetchState';
 import { filter, map } from 'rxjs';
 
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../../core/service/user.service';
 import { Router } from '@angular/router';
+import { IWritting } from '../../core/models/IMessage';
 
 @Component({
   selector: 'app-all-conversation',
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class AllConversationComponent implements OnInit {
   @Input() userId!: string | null;
+  checkWritte : IWritting = {isWrite:false , from:""}; 
   allFriends!: any;
   allFriendState: FetchState = {
     isLoading: true,
@@ -19,7 +22,7 @@ export class AllConversationComponent implements OnInit {
     isPedding: true,
   };
   index: number = 0;
-  constructor(private _user: UserService, private _route: Router) {}
+  constructor(private _user: UserService, private _route: Router , private chatService : ChatServiceService) {}
 
   ngOnInit(): void {
     this._user
@@ -34,6 +37,12 @@ export class AllConversationComponent implements OnInit {
         this.allFriendState.isFinish = true;
         this.allFriends = data;
       });
+      this.chatService.getWritting().
+      subscribe(
+        checkingWrite => {
+          this.checkWritte = checkingWrite;
+        }
+      )
   }
   handleClick(_id: string) {
     this._route.navigate(['/pages/message/', _id]);

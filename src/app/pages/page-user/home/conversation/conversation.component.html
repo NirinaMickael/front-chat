@@ -21,12 +21,13 @@
       <div class="input-group mb-0">
         <input
           type="text"
-          class="form-control"
+          class="form-control py-2 mb-1"
           placeholder="Enter text here..."
           formControlName="messages"
+          (input)="handleChange($event)"
         />
         <div class="input-group-prepend">
-          <button  type="submit" class="input-group-text py-1" 
+          <button  type="submit" class="input-group-text py-3" 
             ><i class="fas fa-paper-plane"></i
           ></button>
         </div>
