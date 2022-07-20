@@ -1,6 +1,6 @@
 import { ChatServiceService } from './../../core/service/chat-service.service';
 import { FetchState } from './../../core/models/FetchState';
-import { filter, map } from 'rxjs';
+import { delay, filter, map } from 'rxjs';
 
 import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../../core/service/user.service';
@@ -25,7 +25,7 @@ export class AllConversationComponent implements OnInit {
   constructor(private _user: UserService, private _route: Router , private chatService : ChatServiceService) {}
 
   ngOnInit(): void {
-    this._user
+      this._user
       .getAllUser('/api/alluser')
       .pipe(
         map((res) => {

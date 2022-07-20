@@ -25,16 +25,24 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
+    let token = sessionStorage.getItem('token') as string;
+    let authReq :HttpRequest<any> = req;
+    if(token != null) authReq = req.clone({
+      setHeaders: {
+          Authorization: `Bearer ${token}`
+      }
+    });
+    return next.handle(authReq).pipe(
       map((event: HttpEvent<any>) => {
-        // if (event instanceof HttpResponse) {
-          
-        // }
         return event;
       }),
       //handling error from server and client
       catchError((error: HttpErrorResponse) => {
         let errorMessage = ' ';
+        if(error.status== 401){
+          sessionStorage.removeItem('id');
+          sessionStorage.removeItem('token');
+        }
         if (error.error instanceof ErrorEvent) {
           errorMessage = `error : ${error.error.message} ${error.name}`;
         } else {

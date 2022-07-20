@@ -13,21 +13,25 @@ import { AuthService } from 'src/app/core/service/auth.service';
 })
 export class LoginComponent implements OnInit, AfterViewInit {
   typeSelected!: string;
+  errorM !:string|undefined;
   constructor(
     private _user: AuthService,
     private _useForm: FormBuilder,
-    private _route: Router
+    private _route: Router,
+    private _spinnerLoad : NgxSpinnerService
   ) {
     this.typeSelected = 'line-spin-fade'
   }
   ngOnInit(): void {
+    this._spinnerLoad.hide();
   }
   ngAfterViewInit(): void {
     this._user.user$.subscribe({
       next:(res) => {
         if(res){
           sessionStorage.setItem('id',res.data["_id"]);
-          this._route.navigateByUrl('pages')
+          sessionStorage.setItem('token',res.token);
+          setTimeout(()=>this._route.navigateByUrl('pages'),2000)
         }
       },
       error : (error) => console.log("eee"+error)
@@ -39,6 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   });
   handleSubmit(event: Event) {
     event.preventDefault();
+    this._spinnerLoad.show();
     const data = this.loginForm.value;
     this._user
       .loginUser('/api', data, {
@@ -53,7 +58,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
         },
         error : (error : Observable<IResponse>) => {
           error.subscribe(
-            err => console.log(err.message)
+            err => {
+              this._spinnerLoad.hide();
+              this.errorM = err.message;
+            }
           )
         }
       });

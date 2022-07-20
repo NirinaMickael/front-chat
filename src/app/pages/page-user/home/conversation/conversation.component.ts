@@ -15,10 +15,7 @@ import {
 } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import {
-  AfterContentInit,
-  AfterViewChecked,
   Component,
-  Input,
   OnChanges,
   OnInit,
   SimpleChanges,
@@ -67,6 +64,7 @@ export class ConversationComponent implements OnInit , OnChanges {
           return this.getConversationId(this.ownId, res);
         }),
         map((conv: IResponse) => {
+          console.log("")
           this.convId = (conv.data as IConversation[])[0]._id;
           this.chatService.joinRoom(this.convId);
           return this.convId;

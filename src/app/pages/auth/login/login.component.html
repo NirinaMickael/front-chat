@@ -1,6 +1,15 @@
+<ngx-spinner
+  bdColor="rgba(51,51,51)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+  [fullScreen]="true"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
 <div class="wrapper-form login">
   <div class="wrapper-connect">
-    <h1>you are welcome,stay smile</h1>
+    <h1>Welcome,stay smile</h1>
     <a href="#" class="btn btn-social btn-facebook"
       ><i class="fa fa-facebook"></i> Sign in with Facebook</a
     >
@@ -34,8 +43,9 @@
         class="buttonNeomorphic"
         [disabled]="loginForm.status === 'INVALID' ? true : false"
       >
-        <span>login</span>
+      <span>login</span>
       </button>
+      <small class="text-danger">{{errorM}}</small>
     </form>
     <div class="wrapper-auth">
       <span class="or">Or</span>

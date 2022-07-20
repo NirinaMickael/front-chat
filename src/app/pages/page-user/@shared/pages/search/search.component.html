@@ -18,7 +18,7 @@
       routerLink="{{handleUrl(item.username)}}"
       (click)="handleClick(item['_id'])"
     >
-      <img src="./assets/avatar1.png" alt="no image" srcset="" />
+      <img src={{item.image}} alt="no image" srcset="" />
       <span>{{ item.username }}</span>
     </li>
   </ul>
